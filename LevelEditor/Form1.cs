@@ -25,18 +25,40 @@ namespace LevelEditor
 
         }
 
-        public List<String> GetImagesFromPath()
+        public void LoadImagesFromPath()
         {
+            imageList1 = new ImageList();
+            imageList1.ImageSize = new Size(16, 16);
+
+
             DirectoryInfo folder;
             FileInfo[] Images;
 
             folder = new DirectoryInfo(path);
-            Images = folder.GetFiles("*.png", SearchOption.AllDirectories);
-            List<String> imagesList = new List<String>();
+            try
+            {
+               Images = folder.GetFiles("*.png", SearchOption.AllDirectories);
 
+                foreach (FileInfo image in Images)
+                {
+                    imageList1.Images.Add(Image.FromFile("E:\Diplomarbeit\Rogues-Void\Content\RoguesVoid\Textures\Items\Battery.png");
+                }
+            }
+            catch (Exception e)
+            {
+                //ToDo exception handeling
+            }
 
+            Graphics graphic = Graphics.FromHwnd(this.Handle);
 
-            return imagesList;
+            for(int count = 0; count < imageList1.Images.Count; count++)
+            {
+                imageList1.Draw(graphic, new Point(16, 16), count);
+
+                Application.DoEvents();
+
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 }

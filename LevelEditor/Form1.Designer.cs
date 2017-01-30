@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TileView = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lboimages = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.TileView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,20 +49,20 @@
             this.TileView.TabIndex = 0;
             this.TileView.TabStop = false;
             // 
-            // listBox1
+            // lboimages
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(524, 9);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(153, 251);
-            this.listBox1.TabIndex = 1;
+            this.lboimages.FormattingEnabled = true;
+            this.lboimages.Location = new System.Drawing.Point(524, 9);
+            this.lboimages.Name = "lboimages";
+            this.lboimages.Size = new System.Drawing.Size(153, 251);
+            this.lboimages.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 364);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lboimages);
             this.Controls.Add(this.TileView);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -76,7 +76,7 @@
 
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox TileView;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lboimages;
     }
 }
 
