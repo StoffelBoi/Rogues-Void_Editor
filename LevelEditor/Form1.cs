@@ -13,7 +13,7 @@ namespace LevelEditor
 {
     public partial class Form1 : Form
     {
-        string path = "C:'\'Diplomarbeit'\'Rogues-Void'\'Content'\'RoguesVoid'\'Textures";
+        string path = @"E:\Diplomarbeit\Rogues-Void\Content\RoguesVoid\Textures";
 
         public Form1()
         {
@@ -22,15 +22,16 @@ namespace LevelEditor
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoadImagesFromPath();
+        }
 
+        public void CreateCanvas()
+        {
+           //Canvas DrawLevel = new Canvas();
         }
 
         public void LoadImagesFromPath()
         {
-            imageList1 = new ImageList();
-            imageList1.ImageSize = new Size(16, 16);
-
-
             DirectoryInfo folder;
             FileInfo[] Images;
 
@@ -41,23 +42,33 @@ namespace LevelEditor
 
                 foreach (FileInfo image in Images)
                 {
-                    imageList1.Images.Add(Image.FromFile("E:\Diplomarbeit\Rogues-Void\Content\RoguesVoid\Textures\Items\Battery.png");
+                    imageList1.Images.Add(Image.FromFile(image.FullName));
                 }
             }
             catch (Exception e)
             {
-                //ToDo exception handeling
+                throw new Exception("Filesearch unsuccesful", e);
             }
 
-            Graphics graphic = Graphics.FromHwnd(this.Handle);
+            lvImages.View = View.LargeIcon;
+            imageList1.ImageSize = new Size(64, 64);
+            lvImages.LargeImageList = imageList1;
 
-            for(int count = 0; count < imageList1.Images.Count; count++)
+            for (int i = 0; i < imageList1.Images.Count; i++)
             {
-                imageList1.Draw(graphic, new Point(16, 16), count);
+                ListViewItem item = new ListViewItem();
+                item.ImageIndex = i;
+                lvImages.Items.Add(item);
+            }
+        }
 
-                Application.DoEvents();
-
-                System.Threading.Thread.Sleep(1000);
+        private void lvImages_ItemSelectionChanged(Object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            foreach (ListViewItem item in lvImages.SelectedItems)
+            {
+                int imageIndex = item.ImageIndex;
+                if (imageIndex >= 0 && imageIndex < imageList1.Images.Count)
+                    TileView.Image = imageList1.Images[imageIndex];
             }
         }
     }

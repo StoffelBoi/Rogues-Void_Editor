@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.TileView = new System.Windows.Forms.PictureBox();
-            this.lboimages = new System.Windows.Forms.ListBox();
+            this.lvImages = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.TileView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,29 +44,30 @@
             // 
             // TileView
             // 
-            this.TileView.Location = new System.Drawing.Point(524, 266);
+            this.TileView.Location = new System.Drawing.Point(483, 266);
             this.TileView.Name = "TileView";
-            this.TileView.Size = new System.Drawing.Size(153, 86);
+            this.TileView.Size = new System.Drawing.Size(194, 86);
             this.TileView.TabIndex = 0;
             this.TileView.TabStop = false;
             // 
-            // lboimages
+            // lvImages
             // 
-            this.lboimages.FormattingEnabled = true;
-            this.lboimages.Location = new System.Drawing.Point(524, 9);
-            this.lboimages.Name = "lboimages";
-            this.lboimages.Size = new System.Drawing.Size(153, 251);
-            this.lboimages.TabIndex = 1;
+            this.lvImages.Location = new System.Drawing.Point(483, 12);
+            this.lvImages.Name = "lvImages";
+            this.lvImages.Size = new System.Drawing.Size(194, 248);
+            this.lvImages.TabIndex = 1;
+            this.lvImages.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 364);
-            this.Controls.Add(this.lboimages);
+            this.Controls.Add(this.lvImages);
             this.Controls.Add(this.TileView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Level Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TileView)).EndInit();
             this.ResumeLayout(false);
@@ -76,7 +78,7 @@
 
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox TileView;
-        private System.Windows.Forms.ListBox lboimages;
+        private System.Windows.Forms.ListView lvImages;
     }
 }
 
