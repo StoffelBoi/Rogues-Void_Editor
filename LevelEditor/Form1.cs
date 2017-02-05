@@ -11,17 +11,18 @@ using System.Windows.Forms;
 
 namespace LevelEditor
 {
-    public partial class Form1 : Form
+    public partial class LevelEditor : Form
     {
         string path = @"E:\Diplomarbeit\Rogues-Void\Content\RoguesVoid\Textures";
 
-        public Form1()
+        public LevelEditor()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CreateCanvas();
             LoadImagesFromPath();
         }
 
@@ -62,13 +63,12 @@ namespace LevelEditor
             }
         }
 
-        private void lvImages_ItemSelectionChanged(Object sender, ListViewItemSelectionChangedEventArgs e)
+        private void lvImages_SelectionChanged(Object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            foreach (ListViewItem item in lvImages.SelectedItems)
+            foreach (var item in lvImages.SelectedItems)
             {
-                int imageIndex = item.ImageIndex;
-                if (imageIndex >= 0 && imageIndex < imageList1.Images.Count)
-                    TileView.Image = imageList1.Images[imageIndex];
+                lblItem.Text = item.ToString();
+                TileView.Image = Image.FromFile(item.ToString());
             }
         }
     }
